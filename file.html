@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan Jquery</title>
+    <script src="jquery.js"></script>
+    <style>
+    .change{
+        background: yellow;
+        color: red;
+    }
+    
+    </style>
+</head>
+<body>
+    <h1 class="change">Belajar Jquery</h1>
+    <div id="box1">Box 1</div>
+    <div id="boxes_wrap">
+        <div class="boxes">baris pertama</div>
+         <div class="boxes">baris kedua</div>
+        <div class="boxes">baris dua koma lima</div>
+        <div class="boxes">baris ketiga</div>
+    </div>
+
+    <form action="#">
+        <input type="text"  id="inputText">
+        <input type="submit">
+    </form>
+    <script>
+        //memastikan sudah diload dengan sempurna
+        $(document).ready(function(){
+            //selection
+            // $('h1').css('color','blue');
+            // $('#box1').css('color','green');
+            // $('.boxes').css('color','green');
+
+            // $('.boxes:first').css('color','red');
+            // $('.boxes:last').css('color','orange');
+            // $('.boxes:eq(2)').css('color','black');
+
+             //----------[event]-------------
+             $('h1').click(function(){
+            //    $('h1').css({'color':'purple',
+            //                 'fontSize':'20px',
+            //                 'backgroundColor':'yellow'
+            //             });
+            // $('h1').addClass('change');
+            // $('h1').removeClass('change');
+            $('h1').toggleClass('change'); 
+            
+            });
+
+             $('h1').mouseenter(function(){
+                $('h1').css('color','purple');
+             });
+
+             $('h1').mouseleave(function(){
+                 $('h1').css('color','blue');
+             });
+
+
+             $('.boxes').mouseenter(function(){
+                 $(this).css('color','yellow');
+             });
+
+            //get dan set nilai
+             $('form').submit(function(){
+                 var tulisan =$('#inputText').val();
+                 $('h1').text(tulisan);
+
+                
+                 //mencegah
+                 event.preventDefault();
+             });
+
+
+             //-------[menambah dan menghapus]-----------
+             //append prepend | after before
+             //append
+             $('#boxes_wrap').append('<div>Hallo</div>');
+             //prepend
+             $('#boxes_wrap').prepend('<div>Hallo</div>');
+             //after
+             $('#boxes_wrap').after('<div>Hallo</div>');
+             //before
+             $('#boxes_wrap').before('<div>Hallo</div>');
+
+             //remove dan empty
+            //  $('#boxes_wrap').remove();
+            // $('#boxes_wrap').empty();
+        });
+    </script>
+</body>
+</html>

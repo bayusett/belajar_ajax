@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A12.2018.06059-Bayu Setyadji</title>
+</head>
+<body>
+<div id="box"></div>
+<input type="text" name="name" id="inputText">
+    <button id="button">ambil data</button> 
+    <script type="text/javascript">
+       
+         function load_ajax(url, callback) {
+             // buat objek xmlhttprequest
+             var abc = new XMLHttpRequest();
+             abc.onreadystatechange = cekStatus;
+
+             function cekStatus() {
+                 if (abc.readyState === 4 && abc.status === 200) {
+                     callback(abc.responseText);
+                 }
+             }
+             abc.open('GET',url,true);
+             abc.send();
+         }
+
+         document.getElementById('button').onclick = function() {
+             text= document.getElementById('inputText').value;
+              //memanggil otomatis
+             load_ajax('data.php?b=' + text,function(data) {
+                 document.getElementById('box').innerHTML= data;
+             });
+         };
+       
+    </script>
+</body>
+</html>
+
